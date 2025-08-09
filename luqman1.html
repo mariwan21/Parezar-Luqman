@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Digital Contact Card — Luqman</title>
+<style>
+  :root{
+    --bg:#ffffff;
+    --accent:#000;
+    --pill-shadow: 0 10px 20px rgba(0,0,0,0.18);
+    --icon-size:92px;
+    --gap:34px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  }
+
+  html,body{height:100%; margin:0; background:var(--bg); color:#111}
+  .wrap{
+    max-width:780px;
+    margin:36px auto;
+    padding:36px 24px;
+    text-align:center;
+  }
+
+  h1{
+    font-size:34px;
+    margin:6px 0 22px;
+    font-weight:700;
+  }
+
+  /* big black save contact button */
+  .save-btn{
+    display:inline-block;
+    background:#000;
+    color:#fff;
+    padding:20px 88px;
+    border-radius:60px;
+    box-shadow: var(--pill-shadow);
+    font-weight:700;
+    font-size:20px;
+    text-decoration:none;
+    margin-bottom:40px;
+  }
+
+  /* icon grid */
+  .grid{
+    display:flex;
+    justify-content:center;
+    gap:48px;
+    margin-bottom:36px;
+    flex-wrap:wrap;
+  }
+
+  .icon-card{
+    width: var(--icon-size);
+    height: var(--icon-size);
+    border-radius:22px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow: 0 12px 18px rgba(0,0,0,0.12);
+    cursor:pointer;
+    user-select:none;
+    text-decoration:none;
+  }
+  .icon-label{ display:block; margin-top:10px; font-size:14px; text-align:center; width:120px; }
+
+  /* specific colors similar to screenshot */
+  .whatsapp{ background: linear-gradient(180deg,#3be56d,#0fb84a); color:#fff; }
+  .phone{ background: linear-gradient(180deg,#a8ff7a,#3fe156); color:#fff; }
+  .facebook{ background: linear-gradient(180deg,#2c7ef0,#1480e9); color:#fff; }
+  .instagram{
+    width:120px;
+    height:120px;
+    border-radius:22px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    margin:18px 0 4px;
+    font-size:18px;
+    box-shadow: 0 12px 18px rgba(0,0,0,0.12);
+    background: conic-gradient(from 180deg at 50% 50%, #fdf497, #fdf497 10%, #fd5949 30%, #d6249f 50%, #285AEB 80%);
+    color:#fff;
+  }
+
+  /* bottom create card button (white with shadow) */
+  .create-btn{
+    display:inline-block;
+    background:#fff;
+    color:#000;
+    padding:18px 48px;
+    border-radius:60px;
+    box-shadow: var(--pill-shadow);
+    font-weight:700;
+    font-size:18px;
+    text-decoration:none;
+    margin-top:40px;
+  }
+
+  /* small utilities */
+  .row{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    justify-content:center;
+  }
+  svg{ width:54px; height:54px; }
+  .phone svg{ width:46px; height:46px; transform:rotate(15deg); }
+  @media (max-width:420px){
+    .grid{ gap:20px }
+    .icon-label{ width:90px; font-size:13px }
+    .save-btn{ padding:14px 36px; font-size:18px }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1 id="nameLabel">Luqman</h1>
+
+  <a class="save-btn" id="saveContactBtn" href="#">Save Contact</a>
+
+  <div style="height:48px"></div>
+
+  <div class="grid" aria-hidden="false">
+    <!-- WhatsApp -->
+    <div style="display:flex;flex-direction:column;align-items:center">
+      <a class="icon-card whatsapp" id="waBtn" title="Open WhatsApp">
+        <!-- WhatsApp svg simplified -->
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M12 2C6.48 2 2 6.48 2 12c0 1.97.52 3.8 1.42 5.39L2 22l4.66-1.35C8.2 21.48 10.01 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2z" fill="#fff" opacity="0.06"/>
+          <path d="M17.2 14.3c-.3-.15-1.8-.9-2.08-1-.28-.1-.48-.15-.68.15-.2.3-.78 1-.96 1.2-.18.2-.36.22-.66.08-1.8-.84-3-1.55-4.2-3.5-.3-.46.3-.42.88-1.38.1-.2.05-.4-.03-.55-.08-.15-.68-1.6-.93-2.2-.24-.58-.48-.5-.66-.5-.18 0-.38 0-.58 0-.2 0-.52.07-.8.32-.28.24-1.06 1.04-1.06 2.53 0 1.48 1.08 2.9 1.22 3.1.14.2 2.1 3.2 5.1 4.36 3 .96 3.9.78 4.4.73.5-.05 1.6-.7 1.82-1.4.22-.7.22-1.3.16-1.4-.06-.1-.26-.15-.56-.3z" fill="#fff"/>
+        </svg>
+      </a>
+      <span class="icon-label">WhatsApp</span>
+    </div>
+
+    <!-- Mobile -->
+    <div style="display:flex;flex-direction:column;align-items:center">
+      <a class="icon-card phone" id="callBtn" title="Call">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M6.6 10.8c1.2 2 2.9 3.7 4.9 4.9l1.1-1.1c.2-.2.5-.3.8-.2 1 .3 2.2.5 3.5.5.3 0 .6.2.8.5l1 1.3c.2.3.2.7.1 1C18.7 20.9 15 22 12 22 7 22 2 17 2 12c0-3 1.1-6.7 3.6-9.7.2-.2.5-.3.8-.2l1.3 1c.3.2.5.5.5.8 0 1.2.2 2.5.5 3.5.1.3 0 .6-.2.8L6.6 10.8z" fill="#fff"/>
+        </svg>
+      </a>
+      <span class="icon-label">موبایل</span>
+    </div>
+
+    <!-- Facebook -->
+    <div style="display:flex;flex-direction:column;align-items:center">
+      <a class="icon-card facebook" id="fbBtn" title="Open Facebook">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M15 8h2V5h-2c-1.1 0-2 .9-2 2v1H11v3h2v6h3v-6h2.5l.5-3H16V7c0-.3.2-.5.5-.5H18V4h-1c-1.7 0-3 1.3-3 3v1z" fill="#fff"/>
+        </svg>
+      </a>
+      <span class="icon-label">Facebook</span>
+    </div>
+  </div>
+
+  <!-- Instagram centered below -->
+  <div>
+    <a class="instagram" id="instaBtn" title="Instagram">
+      <svg viewBox="0 0 24 24" width="56" height="56" fill="none" aria-hidden="true">
+        <rect x="5" y="5" width="14" height="14" rx="4" stroke="#fff" stroke-width="1.6" fill="none"></rect>
+        <circle cx="12" cy="12" r="3" stroke="#fff" stroke-width="1.6" fill="none"></circle>
+        <circle cx="17.2" cy="6.8" r="0.9" fill="#fff"></circle>
+      </svg>
+    </a>
+    <div class="icon-label" style="margin-top:8px">Instagram</div>
+  </div>
+
+  <div>
+    <a class="create-btn" href="#" id="createBtn">Create your own card</a>
+  </div>
+</div>
+
+<script>
+  // Replace these with actual values
+  const contact = {
+    fullName: "Luqman",
+    phone: "+9647700000000",
+    email: "luqman@example.com",
+    whatsapp: "+9647700000000",
+    facebook: "https://facebook.com/sampleProfile",
+    instagram: "https://instagram.com/sampleProfile"
+  };
+
+  document.getElementById('nameLabel').textContent = contact.fullName;
+
+  // WhatsApp button opens WhatsApp chat (web or phone)
+  document.getElementById('waBtn').addEventListener('click', function(e){
+    e.preventDefault();
+    const number = encodeURIComponent(contact.whatsapp.replace(/\D/g,''));
+    // opens WhatsApp Web or app
+    const url = `https://wa.me/${number}`;
+    window.open(url, '_blank');
+  });
+
+  // Call button: tel: link
+  document.getElementById('callBtn').addEventListener('click', function(e){
+    e.preventDefault();
+    window.location.href = `tel:${contact.phone}`;
+  });
+
+  // Facebook / Instagram
+  document.getElementById('fbBtn').addEventListener('click', function(e){
+    e.preventDefault(); window.open(contact.facebook, '_blank');
+  });
+  document.getElementById('instaBtn').addEventListener('click', function(e){
+    e.preventDefault(); window.open(contact.instagram, '_blank');
+  });
+
+  // "Create your own card" button — for demo just shows prompt to edit
+  document.getElementById('createBtn').addEventListener('click', function(e){
+    e.preventDefault();
+    const newName = prompt("Enter name for card:", contact.fullName);
+    if(newName) {
+      contact.fullName = newName;
+      document.getElementById('nameLabel').textContent = contact.fullName;
+      alert("Name updated. You can also edit JS variables to change links/icons.");
+    }
+  });
+
+  // Save contact: generate vCard and download .vcf
+  function generateVCard(c){
+    // Basic vCard 3.0
+    const lines = [
+      "BEGIN:VCARD",
+      "VERSION:3.0",
+      `FN:${c.fullName}`,
+      c.email ? `EMAIL;TYPE=INTERNET:${c.email}` : "",
+      c.phone ? `TEL;TYPE=CELL:${c.phone}` : "",
+      c.whatsapp ? `X-WAID:${c.whatsapp}` : "",
+      c.facebook ? `URL:${c.facebook}` : "",
+      c.instagram ? `URL:${c.instagram}` : "",
+      "END:VCARD"
+    ].filter(Boolean);
+    return lines.join("\r\n");
+  }
+
+  document.getElementById('saveContactBtn').addEventListener('click', function(e){
+    e.preventDefault();
+    const vcard = generateVCard(contact);
+    const blob = new Blob([vcard], {type: 'text/vcard'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = (contact.fullName || 'contact') + ".vcf";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+  });
+</script>
+</body>
+</html>
